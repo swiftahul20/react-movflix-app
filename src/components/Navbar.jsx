@@ -1,11 +1,11 @@
 import React from 'react'
-import Featured from './Featured'
+import Upcoming from './Upcoming/Upcoming'
 
 const Navbar = () => {
     return (
         <>
-            <Featured />
-            <nav className='w-full max-w-[1920px] grid grid-flow-col absolute top-0 py-6 px-24 text-white bg-transparent'>
+            <Upcoming />
+            <nav className='w-full max-w-[1920px] grid grid-flow-col absolute top-0 py-6 px-24 text-white bg-transparent drop-shadow-md'>
                 <div className=''> Logo </div>
                 <div className='col-span-2'>
                     <ul className='flex flex-row gap-6'>

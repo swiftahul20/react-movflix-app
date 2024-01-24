@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BeatLoader from "react-spinners/BeatLoader";
-import Slider from "./NetflixSlider";
-import axios from "./lib/axios-instance/GETOptions";
+import Slider from "../NetflixSlider";
+import axios from "../lib/axios-instance/GETOptions";
 
 // API Now Playing in Theaters
 const Trending = () => {
@@ -10,24 +10,24 @@ const Trending = () => {
   const url =
     "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
 
-  const getMovies = async () => {
-    setLoading(true);
-    try {
-      const res = await axios(url);
-      setmovies(res.data.results);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const getMovies = async () => {
+      setLoading(true);
+      try {
+        const res = await axios(url);
+        setmovies(res.data.results);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     getMovies();
   }, []);
 
   return (
     <>
-      <div className="px-10">
+      <div className="px-10 mt-6">
         <div className="text-xl text-white mx-14"> Trending Now </div>
         {!loading ? (
           <>

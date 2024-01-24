@@ -1,19 +1,18 @@
-import React from 'react';
-import Navbar from './components/Navbar'
-import Trending from './components/Trending';
+import React from "react";
+import Navbar from "./components/Navbar";
 
-import '../node_modules/slick-carousel/slick/slick.css'
-import '../node_modules/slick-carousel/slick/slick-theme.css'
-import './App.css'
-
+import "../node_modules/slick-carousel/slick/slick.css";
+import "../node_modules/slick-carousel/slick/slick-theme.css";
+import "./App.css";
+import Trending from "./components/Trending/Trending";
 
 function App() {
-  return (
+    return (
     <>
       <Navbar />
       <Trending />
     </>
-  )
+  );
 }
 
 export default App;
