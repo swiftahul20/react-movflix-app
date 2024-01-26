@@ -10,6 +10,7 @@ const Trending = () => {
   const url =
     "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
 
+
   useEffect(() => {
     const getMovies = async () => {
       setLoading(true);
