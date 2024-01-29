@@ -1,13 +1,40 @@
-import { Button, Modal } from "flowbite-react";
-import { useState } from "react";
-import "./ModalProvider.scss";
+import React, { useContext } from "react";
+import ReactPlayer from 'react-player/youtube'
+import { useModal } from "../../utils/context/ModalContext";
+import { Modal, Button } from "flowbite-react";
+import "./ModalDetails.scss";
 
-const ModalProvider = ({ openModal, setOpenModal }) => {
-  // const [openModal, setOpenModal] = useState(false);
+import DetailsContext from "../../utils/context/MovieDetailsContext";
+import CreditsContext from "../../utils/context/CreditsContext";
+import LogoContext from "../../utils/context/LogoContext";
+
+const ModalDetails = () => {
+  const { openModal, setOpenModal } = useModal(false);
+  const { details } = useContext(DetailsContext);
+  const { credits } = useContext(CreditsContext);
+  const { logos } = useContext(LogoContext);
+
+  const minutes = details.runtime;
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+
+  const genre =
+    details.length === 0
+      ? ""
+      : details.genres.map((item) => item.name).join(" - ");
+
+  const production =
+    details.length === 0
+      ? ""
+      : details.production_companies
+          .map((item) => item.name)
+          .slice(0, 3)
+          .join(", ");
+
+  const logo = logos.length > 0 ? logos[0] : null;
 
   return (
     <>
-      <Button onClick={() => setOpenModal(true)}>Toggle modal</Button>
       <Modal show={openModal} onClose={() => setOpenModal(false)}>
         <div id="wrapper">
           <div className="modal">
@@ -15,19 +42,17 @@ const ModalProvider = ({ openModal, setOpenModal }) => {
               <video
                 autoplay
                 loop
-                poster="https://www.themoviedb.org/t/p/original/fOy6SL5Zs2PFcNXwqEPIDPrLB1q.jpg"
+                poster={
+                  "https://image.tmdb.org/t/p/original/" + details.backdrop_path
+                }
               >
                 <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/1/10/Tears_of_Steel_in_4k_-_Official_Blender_Foundation_release.webm/Tears_of_Steel_in_4k_-_Official_Blender_Foundation_release.webm.2160p.vp9.webm" />
               </video>
-
-              <button
-                type="button"
-                className="close"
-                onClick={() => setOpenModal(false)}
-              >
+              {/* <ReactPlayer playing={true} url='https://www.youtube.com/watch?v=YkQVETRgaBc' /> */}
+              <Button className="close" onClick={() => setOpenModal(false)}>
                 <svg
-                  width="24"
-                  height="24"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -42,14 +67,18 @@ const ModalProvider = ({ openModal, setOpenModal }) => {
                     fill="currentColor"
                   ></path>
                 </svg>
-              </button>
+              </Button>
 
               <div className="header-content">
                 <div className="header-title">
-                  <img
-                    src="https://i.imgur.com/O8SamCz.png"
-                    alt="Tears Of Steel"
-                  />
+                  {logo && (
+                    <img
+                      src={
+                        "https://image.tmdb.org/t/p/original/" + logo.file_path
+                      }
+                      alt={`Image ${logo.id}`}
+                    />
+                  )}
 
                   <div className="header-buttons">
                     <button type="button" className="play">
@@ -125,9 +154,9 @@ const ModalProvider = ({ openModal, setOpenModal }) => {
               <div className="modal-content-first">
                 <div className="modal-description">
                   <div className="description-match">
-                    <span>54% Match</span>
+                    <span>{Math.round(details.vote_average)}/10</span>
                   </div>
-                  <span>2012</span>
+                  <span>{details.release_date?.slice(0, 4)}</span>
                   <svg viewBox="0 0 100 100">
                     <path
                       id="Fill-41"
@@ -140,7 +169,7 @@ const ModalProvider = ({ openModal, setOpenModal }) => {
                       d="M30.596 27.01h7.828v46.465h-8.929V38.928a14.121 14.121 0 01-2.52 2.085A14.722 14.722 0 0124 42.477v-8.335c1.595-.913 2.947-1.965 4.058-3.16a12.723 12.723 0 002.538-3.972zm35.248 28.73c0-2.36-.162-3.894-.482-4.603-.32-.708-.904-1.062-1.745-1.062-.844 0-1.428.403-1.76 1.208-.333.804-.502 2.29-.502 4.457v6.373c0 2.36.161 3.895.484 4.602.32.708.914 1.062 1.778 1.062.82 0 1.397-.385 1.73-1.158.332-.772.497-2.274.497-4.506V55.74zm9.605-18.475v.483h-9.605v-.483c0-2.36-.162-3.894-.482-4.602-.32-.708-.904-1.063-1.745-1.063-.844 0-1.428.408-1.76 1.223-.333.817-.502 2.296-.502 4.442v9.302c.844-1.073 1.79-1.867 2.843-2.382 1.054-.516 2.266-.773 3.641-.773 2.659 0 4.602.821 5.833 2.462 1.23 1.642 1.843 4.265 1.843 7.871v4.956c0 5.6-.87 9.463-2.608 11.586-1.74 2.125-4.815 3.188-9.223 3.188-4.434 0-7.517-1.057-9.258-3.17-1.74-2.115-2.608-5.983-2.608-11.604V40.71c0-5.6.868-9.452 2.608-11.555C56.167 27.052 59.25 26 63.684 26c4.453 0 7.527.8 9.223 2.397 1.694 1.6 2.542 4.556 2.542 8.868z"
                     ></path>
                   </svg>
-                  <span>1h 56m</span>
+                  <span>{`${hours}h ${remainingMinutes}m`}</span>
                   <span className="description-badge">HD</span>
                   <svg viewBox="0 0 58.07 24">
                     <path
@@ -171,35 +200,37 @@ const ModalProvider = ({ openModal, setOpenModal }) => {
                   </svg>
                 </div>
 
-                <p>
-                  The film&apos;s premise is about a group of warriors and
-                  scientists, who gathered at the “Oude Kerk” in Amsterdam to
-                  stage a crucial event from the past, in a desperate attempt to
-                  rescue the world from destructive robots.
-                </p>
+                <p>{details.overview}</p>
               </div>
 
               <div className="modal-content-second">
                 <div className="cast">
                   <span className="title"> Cast: </span>
-                  <span className="sub-title"> Vanja Rukavina,</span>
-                  <span className="sub-title"> Denise Rebergen,</span>
-                  <span className="sub-title"> Rogier Schippers,</span>
-                  <span className="sub-title"> Derek de Lint,</span>
-                  <span className="sub-title"> Sergio Hasselbaink,</span>
-                  <span className="sub-title"> more.</span>
+                  {Object.keys(credits).length > 0 ? (
+                    <>
+                      {credits.slice(0, 8).map((cast, i) => (
+                        <span className="sub-title" key={i}>
+                          {" "}
+                          {cast.name}
+                          {i === cast.name - 1 ? "" : ", "}
+                        </span>
+                      ))}
+                    </>
+                  ) : (
+                    <span className="sub-title"> - </span>
+                  )}
                 </div>
-
                 <div className="genres">
                   <span className="title">Genres: </span>
-                  <span className="sub-title"> Science Fiction. </span>
+                  <span className="sub-title">
+                    {genre && <span className="sub-title"> {genre} </span>}
+                  </span>
                 </div>
-
                 <div className="show">
-                  <span className="title">This show is: </span>
-                  <span className="sub-title">Fictional war, </span>
-                  <span className="sub-title">killer robot, </span>
-                  <span className="sub-title">man vs machine. </span>
+                  <span className="title"> Production: </span>
+                  {production && (
+                    <span className="sub-title">{production + "."}</span>
+                  )}
                 </div>
               </div>
             </div>
@@ -210,4 +241,4 @@ const ModalProvider = ({ openModal, setOpenModal }) => {
   );
 };
 
-export default ModalProvider;
+export default ModalDetails;

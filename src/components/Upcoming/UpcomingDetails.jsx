@@ -44,7 +44,7 @@ const UpcomingDetails = ({ movie }) => {
             {getGenreText()}
           </div>
         </div>
-        <BtnMoreInfo />
+        <BtnMoreInfo id={movie.id} />
       </div>
     </>
   );
