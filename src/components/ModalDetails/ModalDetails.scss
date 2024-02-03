@@ -139,7 +139,7 @@ html {
   width: 100%;
   bottom: 0;
   padding: 0 52px;
-  margin-bottom: 70px;
+  margin-bottom: 50px;
   z-index: 2;
 }
 
@@ -160,16 +160,15 @@ html {
   width: 100%;
 }
 
-.modal .modal-header .header-content .header-title .header-buttons button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.8rem;
-  cursor: pointer;
-  max-height: 42px;
-  min-height: 32px;
-  font-size: 1.6rem;
-}
+// .modal .modal-header .header-content .header-title .header-buttons button {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 0.8rem;
+//   max-height: 42px;
+//   min-height: 32px;
+//   font-size: 1.6rem;
+// }
 
 .modal .modal-header .header-content .header-title .header-buttons .play,
 .modal .modal-header .header-content .header-title .header-buttons .add {
@@ -267,7 +266,7 @@ html {
 .modal .modal-body .modal-content-first .modal-description span {
   font-size: 1.6rem;
   font-weight: 700;
-  font-size: 62.5%;
+  font-size: 85%;
 }
 
 .modal .modal-body .modal-content-first .modal-description svg {

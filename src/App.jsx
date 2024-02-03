@@ -8,24 +8,19 @@ import "./App.css";
 import Trending from "./components/Trending/Trending";
 import { ModalProvider } from "./utils/context/ModalContext";
 import ModalDetails from "./components/ModalDetails/ModalDetails";
-import MovieDetailsProvider from "./utils/provider/MovieDetailsProvider";
-import CreditsProvider from "./utils/provider/CreditsProvider";
-import LogoProvider from "./utils/provider/LogoProvider";
+
+import { DetailsProvider } from "./utils/context/MovieDetailsContext";
 
 function App() {
   return (
     <>
-      <MovieDetailsProvider>
-        <CreditsProvider>
-          <LogoProvider>
-            <ModalProvider>
-              <Navbar />
-              <Trending />
-              <ModalDetails />
-            </ModalProvider>
-          </LogoProvider>
-        </CreditsProvider>
-      </MovieDetailsProvider>
+      <DetailsProvider>
+        <ModalProvider>
+          <Navbar />
+          <Trending />
+          <ModalDetails />
+        </ModalProvider>
+      </DetailsProvider>
     </>
   );
 }

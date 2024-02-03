@@ -5,6 +5,9 @@ module.exports = withMT({
   theme: {
     extend: {},
   },
+  variants: {
+    fill: ['hover', 'focus'],
+  },
   plugins: [
     // ...
     require('flowbite/plugin'),
