@@ -17,6 +17,7 @@ const ModalDetails = () => {
   const hours = Math.floor(minutes / 60);
   const remainingMinutes = minutes % 60;
 
+
   const genre =
     details.length === 0
       ? ""
