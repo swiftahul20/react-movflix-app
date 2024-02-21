@@ -6,7 +6,7 @@ import { Typography } from "@material-tailwind/react";
 import "./ModalDetails.scss";
 
 import DetailsContext from "../../utils/context/MovieDetailsContext";
-import { HeadWithParaSkeleton, ParaSkeleton, VideoSkeleton } from "../Skeleton";
+import { HeadSkeleton, ParaSkeleton, VideoSkeleton } from "../Skeleton";
 import { Starred } from "../../assets/icons/Icons";
 
 const ModalDetails = () => {
@@ -120,6 +120,7 @@ const ModalDetails = () => {
                     </div>
                   )}
                 </div>
+
                 {details.length != 0 ? (
                   <>
                     <div className="modal-description">
@@ -146,7 +147,8 @@ const ModalDetails = () => {
                   </>
                 ) : (
                   <div className="max-w-full animate-pulse mb-2">
-                    <HeadWithParaSkeleton />
+                    <HeadSkeleton />
+                    <ParaSkeleton />
                   </div>
                 )}
               </div>
@@ -193,7 +195,6 @@ const ModalDetails = () => {
                 </div>
               ) : (
                 <div className="max-w-full animate-pulse mb-2">
-                  <HeadWithParaSkeleton />
                   <ParaSkeleton />
                 </div>
               )}
