@@ -19,27 +19,6 @@ const Navbar = () => {
     navigateTo(`/search?query=${encodeURIComponent(newQuery)}`);
   };
 
-  // useEffect(() => {
-  //   if (searchQuery !== "") {
-  //     setlLoading(true);
-  //     const delayType = setTimeout(() => {
-  //       axios
-  //         .get(
-  //           `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1&region=us`
-  //         )
-  //         .then(function (res) {
-  //           console.log(res.data.results);
-  //           setDatas(res.data.results);
-  //           setlLoading(false);
-  //         })
-  //         .catch(function (error) {
-  //           console.log(error);
-  //         });
-  //     }, 1500);
-  //     return () => clearTimeout(delayType);
-  //   }
-  // }, [searchQuery]);
-
   return (
     <>
       <nav className="w-full max-w-[1920px] grid grid-flow-col absolute top-0 z-10 py-6 px-24 bg-gradient-to-b from-black from-1% text-[#e5e5e5] drop-shadow-md">
