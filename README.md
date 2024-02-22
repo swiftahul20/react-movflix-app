@@ -1,4 +1,5 @@
 # Movflix App
+##### (this project is still on development)
 
 This simple app can check the latest or upcoming movie or even search your favorite movie.
 
@@ -9,9 +10,7 @@ This simple app can check the latest or upcoming movie or even search your favor
 - [Folder Structure](#folder-structure)
 - [Features](#features)
 - [Coding Style](#coding-style)
-- [Code Overview](#code-overview)
-  - [Fetching Weather Data](fetching-weather-data)
-  - [Displaying Weather Data](displaying-weather-data)   
+- [Code Overview](#code-overview)  
 - [Deployment](#deployment)
 - [License](#license)
 
