@@ -1,4 +1,6 @@
-# Movflix App 
+# Movflix App
+
+##### (this project is still on development)
 
 This simple app can check the latest or upcoming movie or even search your favorite movie.
 
@@ -10,14 +12,13 @@ This simple app can check the latest or upcoming movie or even search your favor
 - [Features](#features)
 - [Coding Style](#coding-style)
 - [Code Overview](#code-overview)
-  - [Fetching Weather Data](fetching-weather-data)
-  - [Displaying Weather Data](displaying-weather-data)   
 - [Deployment](#deployment)
 - [License](#license)
 
 ## Getting Started
 
 ### Prerequisites
+
 - [React & Vite](https://vitejs.dev/guide/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Material Tailwind](https://www.material-tailwind.com/)
@@ -28,6 +29,7 @@ This simple app can check the latest or upcoming movie or even search your favor
 - [React Slick](https://react-slick.neostack.com/)
 
 ### Installation
+
 ```bash
 # clone the project
 https://github.com/swiftahul20/react-movflix-app.git
@@ -38,14 +40,15 @@ npm install
 ```
 
 ### Usage
+
 ```bash
 # start the development server
 # localhost:5173
 npm run dev
 ```
 
-
 ### Folder Structure
+
 ```
 movflix-app  /
 ├── public
@@ -95,6 +98,7 @@ movflix-app  /
 - Login user (still on development)
 
 ### Coding Style
+
 ESlint + Prettier
 
 ### Code Overview
@@ -102,12 +106,14 @@ ESlint + Prettier
 (still on development)
 
 ### Deployment
+
 ```bash
 # building for deployment
 npm run build
 ```
 
 ## License
+
 - API from [The Movie Database](https://developer.themoviedb.org/reference/intro/getting-started)
 - Netflix Modal from [PingO](https://codepen.io/iPingOi/pen/wvmoVwp)
 - Netflix Slider from [Serhazor](https://github.com/Serhazor/netflix-slider/tree/master)
