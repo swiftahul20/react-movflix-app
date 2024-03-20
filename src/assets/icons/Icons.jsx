@@ -8,7 +8,7 @@ const InfoIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-6 h-6 mr-2"
+      className="h-6 w-6"
     >
       <path
         strokeLinecap="round"
@@ -38,7 +38,7 @@ const ArrowDown = () => {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-6 h-6"
+      className="h-6 w-6"
     >
       <path
         strokeLinecap="round"
@@ -57,7 +57,7 @@ const EmptyImage = () => {
       viewBox="0 0 24 24"
       stroke-width="1.5"
       stroke="currentColor"
-      class="w-6 h-6"
+      class="h-6 w-6"
     >
       <path
         stroke-linecap="round"
@@ -76,7 +76,7 @@ const AddList = () => {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="red"
-      className="w-4 h-4"
+      className="h-4 w-4"
     >
       <path
         strokeLinecap="round"
@@ -95,7 +95,7 @@ const Starred = () => {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-4 h-4 hover:fill-current group-[.starred]:text-[#FFD700]"
+      className="h-4 w-4 hover:fill-current group-[.starred]:text-[#FFD700]"
     >
       <path
         strokeLinecap="round"

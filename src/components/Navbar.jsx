@@ -1,16 +1,22 @@
-import React, { useState, useEffect } from "react";
-import axios from "./lib/axios-instance/GETOptions";
-import { Input } from "@material-tailwind/react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Logo from "../assets/image/logo_full.png";
-import navigation from "./lib/navigation";
-import { MoonLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import {
+  Input,
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+  Avatar,
+  Typography,
+} from "@material-tailwind/react";
+
+import navigation from "./lib/navigation";
+
+import Logo from "../assets/image/logo_full.png";
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [datas, setDatas] = useState([]);
-  const [loading, setlLoading] = useState(false);
   const navigateTo = useNavigate();
 
   const handleSearchChange = (event) => {
@@ -21,20 +27,26 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="w-full max-w-[1920px] grid grid-flow-col absolute top-0 z-10 py-6 px-24 bg-gradient-to-b from-black from-1% text-[#e5e5e5] drop-shadow-md">
+      <nav className="from-1% absolute top-0 z-10 grid w-full max-w-[1920px] grid-flow-col bg-gradient-to-b from-black px-24 py-6 text-[#b6b5b5] drop-shadow-md">
         <div className="flex">
           <div className="w-1/6">
-            <img className="drop-shadow-md w-40" src={Logo}></img>{" "}
+            <img className="w-40 drop-shadow-md" src={Logo}></img>{" "}
           </div>
-          <div className="w-5/6 flex flex-row justify-between items-center">
-            <ul className="flex flex-row gap-6 hover:text-red">
+          <div className="flex w-5/6 flex-row items-center justify-between">
+            <ul className="flex flex-row gap-6">
               {navigation.map((item, i) => (
-                <NavLink key={i} to={item.path}>
+                <NavLink
+                  className={
+                    "hover:text-black [&.active]:font-bold [&.active]:text-white"
+                  }
+                  key={i}
+                  to={item.path}
+                >
                   <li className="hover:text-[#b3b3b3]"> {item.name} </li>
                 </NavLink>
               ))}
             </ul>
-            <ul className="flex flex-row justify-end gap-6 items-center">
+            <ul className="flex flex-row items-center justify-end gap-6">
               <li>
                 <div className="w-72">
                   <Input
@@ -46,7 +58,25 @@ const Navbar = () => {
                   />
                 </div>
               </li>
-              <li className="hover:text-[#b3b3b3]"> Login </li>
+              <li className="hover:text-[#b3b3b3]">
+                <Menu placement="top-end">
+                  <MenuHandler>
+                    <Avatar
+                      variant="circular"
+                      alt="tania andrew"
+                      className="cursor-pointer"
+                      src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+                    />
+                  </MenuHandler>
+                  <MenuList className="border-0 bg-[#121212]/90">
+                    <MenuItem className="hover:none flex items-start">
+                      <Typography variant="small" className="font-small">
+                        Sign Out
+                      </Typography>
+                    </MenuItem>
+                  </MenuList>
+                </Menu>
+              </li>
             </ul>
           </div>
         </div>

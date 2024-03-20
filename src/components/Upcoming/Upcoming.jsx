@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Slider from "react-slick";
-import axios from "../lib/axios-instance/GETOptions";
 import MoonLoader from "react-spinners/MoonLoader";
 import { ArrowNext, ArrowPrev } from "../Arrow";
+import { BtnMoreInfo } from "../Button";
 
-import UpcomingDetails from "./UpcomingDetails";
+import useUpcoming from "./useUpcoming";
 
 const Upcoming = () => {
   const settings = {
@@ -16,27 +16,7 @@ const Upcoming = () => {
     prevArrow: <ArrowPrev />,
   };
 
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const url =
-    "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
-
-  useEffect(() => {
-    const getMovieList = async () => {
-      try {
-        const res = await axios(url);
-        setMovies(res.data.results);
-        setError(null);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getMovieList();
-  }, []);
+  const { movies, loading, getGenreText, handleClick } = useUpcoming();
 
   return (
     <div>
@@ -54,7 +34,29 @@ const Upcoming = () => {
                     alt="backdrop"
                   ></img>
                 </div>
-                <UpcomingDetails movie={movie} />
+                <div className="absolute top-40 z-10 max-w-[1280px]">
+                  <div className="flex w-full flex-col gap-4 px-48 text-white drop-shadow-lg">
+                    <span className="w-fit rounded-full bg-black/30 px-4 py-2 text-xl">
+                      {" "}
+                      ⏳ Upcoming in Theaters{" "}
+                    </span>
+                    <span className="text-5xl"> {movie.title} </span>
+                    <span className="text-md">
+                      {" "}
+                      {movie.release_date.slice(0, 4)} -{" "}
+                      {movie.original_language}{" "}
+                    </span>
+                    <p className="text-pretty text-xl"> {movie.overview} </p>
+                    <div>{getGenreText()}</div>
+                  </div>
+                  <BtnMoreInfo
+                    className="ml-2"
+                    variant="btnInfoRed"
+                    label="More Info"
+                    onClick={handleClick}
+                    id={movie.id}
+                  />
+                </div>
               </div>
             ))}
           </Slider>

@@ -1,16 +1,16 @@
 const navigation = [
-    {
-        path: '/home',
-        name: 'Home'
-    },
-    {
-        path: '/movie',
-        name: 'Movie'
-    },
-    {
-        path: '/my-list',
-        name: 'My List'
-    },
-]
+  {
+    path: "/home",
+    name: "Home",
+  },
+  {
+    path: "/movie",
+    name: "Movie",
+  },
+  // {
+  //     path: '/my-list',
+  //     name: 'My List'
+  // },
+];
 
-export default navigation
+export default navigation;

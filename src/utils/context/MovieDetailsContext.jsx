@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
 import axios from "../../components/lib/axios-instance/GETOptions";
-// import { useModal } from "./ModalContext";
 
 const DetailsContext = createContext();
 
@@ -13,13 +12,13 @@ export const DetailsProvider = ({ children }) => {
   const getMoviesDetails = async (id) => {
     Promise.all([
       axios.get(
-        `https://api.themoviedb.org/3/movie/${id}?append_to_response=credits%2C%20content_ratings&language=en-US`
+        `https://api.themoviedb.org/3/movie/${id}?append_to_response=credits%2C%20content_ratings&language=en-US`,
       ),
       axios.get(
-        `https://api.themoviedb.org/3/movie/${id}/images?include_image_language=en`
+        `https://api.themoviedb.org/3/movie/${id}/images?include_image_language=en`,
       ),
       axios.get(
-        `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`
+        `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
       ),
     ])
       .then(([details, logos, videos]) => {
@@ -35,7 +34,13 @@ export const DetailsProvider = ({ children }) => {
 
   return (
     <DetailsContext.Provider
-      value={{ details, credits, logos, videos, getMoviesDetails }}
+      value={{
+        details,
+        credits,
+        logos,
+        videos,
+        getMoviesDetails,
+      }}
     >
       {children}
     </DetailsContext.Provider>

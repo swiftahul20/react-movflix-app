@@ -1,40 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BeatLoader from "react-spinners/BeatLoader";
 import Slider from "../NetflixSlider";
-import axios from "../lib/axios-instance/GETOptions";
+import useTrending from "./useTrending";
 
 // API Now Playing in Theaters
 const Trending = () => {
-  const [movies, setmovies] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const url =
-    "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
-
-
-  useEffect(() => {
-    const getMovies = async () => {
-      setLoading(true);
-      try {
-        const res = await axios(url);
-        setmovies(res.data.results);
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getMovies();
-  }, []);
-
+  const { movies, loading } = useTrending();
   return (
     <>
-      <div className="px-10 mt-6">
-        <div className="text-xl text-white mx-14"> Trending Now </div>
+      <div className="mt-6 px-10">
+        <div className="mx-14 text-xl text-white"> Now Playing </div>
         {!loading ? (
           <>
             <Slider>
               {movies.map((movie) => (
-                <Slider.Item movie={movie} key={movie.id}></Slider.Item>
+                <Slider.Item
+                  poster={movie.poster_path}
+                  id={movie.id}
+                  key={movie.id}
+                ></Slider.Item>
               ))}
             </Slider>
           </>

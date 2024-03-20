@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import { useModal } from "../../utils/context/ModalContext";
 import { Modal, Button } from "flowbite-react";
@@ -40,6 +40,8 @@ const ModalDetails = () => {
   const randomTrailer = Math.floor(Math.random() * trailers.length);
   const trailer = trailers[randomTrailer];
 
+  const timeout = () => {};
+
   return (
     <>
       <Modal show={openModal} onClose={() => setOpenModal(false)}>
@@ -58,9 +60,9 @@ const ModalDetails = () => {
                   <VideoSkeleton />
                 )}
               </div>
-              <div className="absolute top-8 right-60 cursor-auto">
+              <div className="absolute right-60 top-8 cursor-auto">
                 <button
-                  className="px-2 py-2 border rounded-full cursor-pointer"
+                  className="cursor-pointer rounded-full border px-2 py-2"
                   onClick={() => setOpenModal(false)}
                 >
                   <svg
@@ -85,16 +87,16 @@ const ModalDetails = () => {
             </div>
             <div className="modal-body">
               <div className="modal-content-first">
-                <div className="flex flex-row justify-start gap-4 mb-4">
+                <div className="mb-4 flex flex-row justify-start gap-4">
                   {details.length != 0 ? (
                     <>
-                      <Button className="bg-[#E50914] border-none cursor-pointer">
+                      <Button className="cursor-pointer border-none bg-[#E50914]">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
-                          className="w-6 h-6 mr-2"
+                          className="mr-2 h-6 w-6"
                         >
                           <path
                             strokeLinecap="round"
@@ -104,12 +106,12 @@ const ModalDetails = () => {
                         </svg>
                         Add to List{" "}
                       </Button>
-                      <button className="group starred border px-4 rounded-full">
+                      <button className="starred group rounded-full border px-4">
                         <Starred />
                       </button>
                     </>
                   ) : (
-                    <div className="max-w-full animate-pulse mb-2">
+                    <div className="mb-2 max-w-full animate-pulse">
                       <Button
                         disabled
                         tabIndex={-1}
@@ -146,7 +148,7 @@ const ModalDetails = () => {
                     <p>{details.overview}</p>
                   </>
                 ) : (
-                  <div className="max-w-full animate-pulse mb-2">
+                  <div className="mb-2 max-w-full animate-pulse">
                     <HeadSkeleton />
                     <ParaSkeleton />
                   </div>
@@ -194,7 +196,7 @@ const ModalDetails = () => {
                   </div>
                 </div>
               ) : (
-                <div className="max-w-full animate-pulse mb-2">
+                <div className="mb-2 max-w-full animate-pulse">
                   <ParaSkeleton />
                 </div>
               )}

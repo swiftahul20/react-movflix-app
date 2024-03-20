@@ -1,7 +1,7 @@
 import React from "react";
 import "./Content.scss";
 
-const Content = ({ movie, onClose }) => (
+const Content = ({ movie }) => (
   <div className="content">
     <div className="content__background">
       <div className="content__background__shadow" />
@@ -20,9 +20,6 @@ const Content = ({ movie, onClose }) => (
           quis quam congue, non fringilla orci placerat. Praesent sollicitudin
         </div>
       </div>
-      <button className="content__close" onClick={onClose}>
-        {/* <IconCross /> */}
-      </button>
     </div>
   </div>
 );

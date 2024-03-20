@@ -9,8 +9,11 @@ import Layout from "./components/Layout";
 import MyList from "./pages/MyList";
 import Movie from "./pages/Movie";
 import Home from "./pages/Home";
-import Search from "./pages/Search";
+import Filter from "./pages/Filter";
 import Error from "./pages/Error";
+import Login from "./pages/Login";
+
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
   return (
@@ -18,12 +21,17 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="home" element={<Home />} />
-            <Route path="my-list" element={<MyList />} />
-            <Route path="movie" element={<Movie />} />
-            <Route path="search" element={<Search />} />
+            {/* protected routes  */}
+            <Route>
+              <Route path="/" element={<Home />} />
+              <Route path="home" element={<Home />} />
+              <Route path="my-list" element={<MyList />} />
+              <Route path="movie" element={<Movie />} />
+              <Route path="search" element={<Filter />} />
+            </Route>
           </Route>
+          {/* public route  */}
+          <Route path="login" element={<Login />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>

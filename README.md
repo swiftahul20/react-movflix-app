@@ -1,4 +1,4 @@
-# Movflix App
+# Movflix App 
 
 This simple app can check the latest or upcoming movie or even search your favorite movie.
 
